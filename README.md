@@ -27,6 +27,11 @@ Here are a few clarifying tips:
     Once you are done looking, you can click Next Hand. If after the hand, one player has 0 chips, you will advance to the Play screen with a message that you won or lost.
     Otherwise, you will be redirected to the next hand and may continue to play.
 
+# How to Run:
+
+First, download the game files and place them into a folder. Open your terminal and navigate to within that folder.
+Next, type "flask run" into the terminal. A link should pop up, which when clicked, will take you to the webapp.
+
 # How to Play:
 
 #### Step 1: Registering/Logging In
