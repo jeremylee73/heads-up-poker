@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Profile
+{% endblock %}
+
+{% block main %}
+    <h2>Profile</h2><br>
+    Username: {{ user['username'] }}<br><br>
+    Record: {{ user['wins'] }}-{{ user['losses'] }}<br><br>
+    <form action="/profile" method="post" class="center">
+        <div class="form-group">
+            <input class="form-control" name="old_password" type="password" placeholder="Old Password" autocomplete="off" type="text">
+            <input class="form-control" name="new_password" type="password" placeholder="New Password" autocomplete="off" type="text">
+            <button class="btn btn-primary" type="submit" name="change_password">Change Password</button>
+        </div>
+    </form>
+{% endblock %}

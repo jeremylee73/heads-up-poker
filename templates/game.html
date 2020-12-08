@@ -1,0 +1,94 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Game
+{% endblock %}
+
+{% block main %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var element = document.querySelector(".scroll")
+            element.scrollTop = element.scrollHeight;
+        })
+    </script>
+    <div class="actions left">
+        <form action="/game" method="post">
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" name="check">Check</button>
+            </div>
+        </form>
+        <form action="/game" method="post">
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" name="call">Call</button>
+            </div>
+        </form>
+        <form action="/game" method="post">
+            <div class="form-group">
+                <input autocomplete="off" autofocus class="form-control" name="raise_size" placeholder="Raise Size" type="number">
+                <button class="btn btn-primary" type="submit" name="raise">Raise</button>
+            </div>
+        </form>
+        <form action="/game" method="post">
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" name="fold">Fold</button>
+            </div>
+        </form>
+    </div>
+    <div class="log right">
+        <b>Log</b>
+        <br>
+        <p class="scroll" style="text-align: left; height: 700px;">
+            {% for entry in entries %}
+                {% if entry['entry'] == "Preflop:" or entry['entry'] == "Flop:" or entry['entry'] == "Turn:" or entry['entry'] == "River:" %}
+                    <b>{{ entry['entry'] }}</b>
+                {% else %}
+                    {{ entry['entry'] }}
+                {% endif %}
+                <br>
+            {% endfor %}
+        </p>
+    </div>
+    <div class="main center">
+        <div class="opp_cards">
+            {% if position == "sb" %}
+                <p>Opponent : Big Blind<p>
+            {% else %}
+                <p>Opponent : Small Blind</p>
+            {% endif %}
+            <p>Stack : {{ opp_chips }}</p>
+            <img class="card" src="/static/cards/purple_back.png">
+            <img class="card" src="/static/cards/purple_back.png">
+            <br><br>
+            <p>Bet : {{ opp_bet }}</p>
+        </div>
+        <p class="pot_size">Pot: {{ pot }}</p>
+        <div class="board">
+            {% if street != "preflop" %}
+                <img class="card" src="/static/cards/{{ board[0:2] }}.png">
+                <img class="card" src="/static/cards/{{ board[2:4] }}.png">
+                <img class="card" src="/static/cards/{{ board[4:6] }}.png">
+            {% else %}
+                <img class="card" style="visibility: hidden;" src="/static/cards/{{ board[0:2] }}.png">
+            {% endif %}
+            {% if street == "turn" or street == "river" %}
+                <img class="card" src="/static/cards/{{ board[6:8] }}.png">
+            {% endif %}
+            {% if street == "river" %}
+                <img class="card" style="visibility: visible;" src="/static/cards/{{ board[8:] }}.png">
+            {% endif %}
+        </div>
+        <br>
+        <div class="my_cards">
+            <p>Bet : {{ bet }}</p>
+            <img class="card" src="/static/cards/{{ hand[0:2] }}.png">
+            <img class="card" src="/static/cards/{{ hand[2:] }}.png">
+            <br><br>
+            {% if position == "sb" %}
+                <p>Me : Small Blind<p>
+            {% else %}
+                <p>Me : Big Blind</p>
+            {% endif %}
+            <p>Stack : {{ chips }}</p>
+        </div>
+    </div>
+{% endblock %}

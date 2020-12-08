@@ -1,0 +1,35 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block main %}
+    <div class="section">
+        <h2>Leaderboard</h2><br>
+        <table>
+            <thead>
+                <tr>
+                    <th>User</th>
+                    <th>Wins (+2)</th>
+                    <th>Losses (-1)</th>
+                    <th>Points</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for user in users %}
+                    <tr>
+                        <td>{{ user['username'] }}</td>
+                        <td>{{ user['wins'] }}</td>
+                        <td>{{ user['losses'] }}</td>
+                        {% if user['wins'] * 2 - user['losses'] < 0 %}
+                            <td>0</td>
+                        {% else %}
+                            <td>{{ user['wins'] * 2 - user['losses'] }}</td>
+                        {% endif %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock %}

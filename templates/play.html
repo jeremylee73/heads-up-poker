@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Play
+{% endblock %}
+
+{% block main %}
+    <h2>Play</h2><br>
+    <form action="/game" method="get" class="center">
+        <div class="form-group">
+            {% if active %}
+                <button class="btn btn-primary" id="create_code" type="submit" name="create_game" value="created">Resume Game</button>
+            {% else %}
+                <button class="btn btn-primary" id="create_code" type="submit" name="create_game" value="created">Start Game</button>
+            {% endif %}
+        </div>
+    </form>
+{% endblock %}

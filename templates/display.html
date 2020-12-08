@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Display
+{% endblock %}
+
+{% block main %}
+    <div class="main center">
+        <div class="opp_cards">
+            <img class="card" src="/static/cards/{{ opp_hand[0:2] }}.png">
+            <img class="card" src="/static/cards/{{ opp_hand[2:] }}.png">
+        </div>
+        <br>
+        <div class="board">
+            <img class="card" src="/static/cards/{{ board[0:2] }}.png">
+            <img class="card" src="/static/cards/{{ board[2:4] }}.png">
+            <img class="card" src="/static/cards/{{ board[4:6] }}.png">
+            <img class="card" src="/static/cards/{{ board[6:8] }}.png">
+            <img class="card" style="visibility: visible;" src="/static/cards/{{ board[8:] }}.png">
+        </div>
+        <br>
+        <div class="my_cards">
+            <img class="card" src="/static/cards/{{ hand[0:2] }}.png">
+            <img class="card" src="/static/cards/{{ hand[2:] }}.png">
+        </div>
+        <br>
+        <form action="/game" method="get">
+            <div class="form-group">
+                <button class="btn btn-primary" type="submit" name="next_hand">Next Hand</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
