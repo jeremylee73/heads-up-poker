@@ -1,3 +1,7 @@
+# Heads Up Poker
+
+For a demo of the game, watch: https://www.youtube.com/watch?v=3lPsMBgIg_U
+
 # Project Overview:
 
 My project is called Heads Up Poker, a game where a user can play a 1-on-1 No Limit Texas Hold-em Poker game against a bot I designed.
