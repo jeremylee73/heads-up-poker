@@ -8,7 +8,7 @@ from flask import redirect, render_template, request, session
 from functools import wraps
 
 # Configure CS50 Library to use SQLite database
-db = SQL("postgres://urlwxfzqegnech:6d91738308f03118752f268abe5f1f9cd9dda478feb304408dbb53294084fe50@ec2-54-159-107-189.compute-1.amazonaws.com:5432/dbsl0esi99j7nf")
+db = SQL("sqlite:///poker.db")
 
 def login_required(f):
     """
